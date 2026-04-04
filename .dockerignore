@@ -1,0 +1,17 @@
+.git
+.gitignore
+.env
+.env.*
+__pycache__
+.pytest_cache
+*.py[cod]
+output/
+storage/
+apify_storage/
+tests/
+*.md
+!README.md
+.venv/
+venv/
+.claude/
+CLAUDE.md

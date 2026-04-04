@@ -1,0 +1,28 @@
+{
+  "actorSpecification": 1,
+  "name": "linkedin-post-comment-scraper",
+  "title": "LinkedIn Post & Comment Scraper",
+  "description": "Scrape LinkedIn posts and comments by keyword or URL. No browser, no cookie required. Discovers posts via search engines, extracts data from public JSON-LD.",
+  "version": "1.1",
+  "buildTag": "latest",
+  "environmentVariables": [
+    {
+      "name": "GOOGLE_API_KEY",
+      "title": "Google API Key (optional)",
+      "description": "Optional Google Custom Search API key for better URL discovery. Free: 100 queries/day. Get yours at https://console.cloud.google.com/",
+      "isSecret": true
+    },
+    {
+      "name": "GOOGLE_CSE_ID",
+      "title": "Google Custom Search Engine ID (optional)",
+      "description": "Custom Search Engine ID (cx). Create at https://programmablesearchengine.google.com/ with 'Search entire web' enabled.",
+      "isSecret": true
+    }
+  ],
+  "defaultRunOptions": {
+    "build": "latest",
+    "memoryMbytes": 512,
+    "timeoutSecs": 1800
+  },
+  "input": "./INPUT_SCHEMA.json"
+}

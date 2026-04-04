@@ -1,0 +1,55 @@
+{
+  "title": "LinkedIn Post & Comment Scraper",
+  "description": "Scrape LinkedIn posts and comments by keyword or direct URL. No cookie required.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "keywords": {
+      "title": "Search Keywords",
+      "type": "array",
+      "description": "Search terms to find LinkedIn posts. The actor discovers post URLs via DuckDuckGo (free) and optionally Google Custom Search (free API key, better results). Max 20 keywords per run.",
+      "editor": "stringList",
+      "example": ["AI automation", "digital transformation SME"],
+      "sectionCaption": "Post Discovery",
+      "sectionDescription": "Find LinkedIn posts by keyword. The actor uses search engines to discover public post URLs."
+    },
+    "startUrls": {
+      "title": "Direct Post URLs",
+      "type": "array",
+      "description": "Scrape specific LinkedIn post URLs directly. Use this OR keywords.",
+      "editor": "requestListSources",
+      "example": [{"url": "https://www.linkedin.com/posts/example-post-123"}]
+    },
+    "maxPostsPerKeyword": {
+      "title": "Max Posts per Keyword",
+      "type": "integer",
+      "description": "Maximum number of posts to collect per keyword.",
+      "default": 15,
+      "minimum": 1,
+      "maximum": 25,
+      "sectionCaption": "Scraping Options"
+    },
+    "dateFilter": {
+      "title": "Date Filter",
+      "type": "string",
+      "description": "Only discover posts from this time period.",
+      "default": "past-week",
+      "enum": ["past-day", "past-week", "past-month"],
+      "enumTitles": ["Past 24 hours", "Past week", "Past month"]
+    },
+    "scrapeComments": {
+      "title": "Scrape Comments",
+      "type": "boolean",
+      "description": "Extract comments from each post (up to ~10 per post via JSON-LD). Includes commenter name, text, and date.",
+      "default": true
+    },
+    "proxyConfiguration": {
+      "title": "Proxy Configuration",
+      "type": "object",
+      "description": "Proxy for HTTP requests. Strongly recommended for reliable results — without proxy, LinkedIn rate-limits after ~10 requests. Each request uses a fresh proxy IP for automatic rotation.",
+      "editor": "proxy",
+      "sectionCaption": "Proxy (Recommended)",
+      "sectionDescription": "Without proxy the actor works for small test runs (~5 posts). For production use, enable Apify proxy — it rotates IPs automatically per request to avoid LinkedIn rate limits."
+    }
+  }
+}

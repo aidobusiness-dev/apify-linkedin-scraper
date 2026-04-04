@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.env
+.env.*
+output/
+*.log
+.venv/
+venv/
+storage/
+apify_storage/
+CLAUDE.md
